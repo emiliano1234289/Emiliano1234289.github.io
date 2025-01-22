@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas Domésticas</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .task-list-container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    .task-list-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+
+    ul.task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.task-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+      transition: background-color 0.3s ease;
+    }
+
+    ul.task-list li:hover {
+      background-color: #e9e9e9;
+    }
+
+    .task-actions button {
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background-color: #4caf50;
+      color: #fff;
+      margin-right: 5px;
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    .add-task-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .add-task-container input {
+      width: 75%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .add-task-container button {
+      width: 20%;
+      padding: 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="task-list-container">
+    <h1 class="task-list-title">Lista de Tareas Domésticas</h1>
+    <ul class="task-list" id="taskList">
+      <li>
+        Lavar los platos
+        <div class="task-actions">
+          <button class="edit-btn">Editar</button>
+          <button class="delete-btn">Eliminar</button>
+        </div>
+      </li>
+      <li>
+        Barrer el piso
+        <div class="task-actions">
+          <button class="edit-btn">Editar</button>
+          <button class="delete-btn">Eliminar</button>
+        </div>
+      </li>
+      <li>
+        Sacar la basura
+        <div class="task-actions">
+          <button class="edit-btn">Editar</button>
+          <button class="delete-btn">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+    <div class="add-task-container">
+      <input type="text" id="newTask" placeholder="Nueva tarea...">
+      <button onclick="addTask()">Agregar</button>
+    </div>
+  </div>
+
+  <script>
+    function addTask() {
+      const taskList = document.getElementById('taskList');
+      const newTaskInput = document.getElementById('newTask');
+      const newTaskText = newTaskInput.value.trim();
+
+      if (newTaskText !== '') {
+        const newTaskItem = document.createElement('li');
+        newTaskItem.innerHTML = `
+          ${newTaskText}
+          <div class="task-actions">
+            <button class="edit-btn">Editar</button>
+            <button class="delete-btn" onclick="deleteTask(this)">Eliminar</button>
+          </div>
+        `;
+        taskList.appendChild(newTaskItem);
+        newTaskInput.value = '';
+      }
+    }
+
+    function deleteTask(button) {
+      const taskItem = button.parentElement.parentElement;
+      taskItem.remove();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nosotros</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f5f1e1; /* Beige claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      animation: backgroundAnimation 10s infinite alternate;
+    }
+
+    /* Animación de fondo sutil */
+    @keyframes backgroundAnimation {
+      0% {
+        background-color: #f5f1e1;
+      }
+      100% {
+        background-color: #e0d8c0;
+      }
+    }
+
+    .container {
+      width: 80%;  /* Ancho de la sección */
+      max-width: 1000px;
+      padding: 50px;
+      background-color: #fff; /* Blanco */
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      color: #5d4037;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+      text-align: center;
+    }
+
+    /* Animación para entrada de los elementos */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 0.5s forwards;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #6d4c41;
+      text-transform: uppercase;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #3e2723;
+      margin-bottom: 30px;
+      opacity: 0.8;
+      animation: fadeIn 1s ease-in-out 1s forwards;
+    }
+
+    .about-text {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #5d4037;
+      margin-bottom: 40px;
+      text-align: justify;
+      opacity: 0.9;
+      animation: fadeIn 1s ease-in-out 1.5s forwards;
+    }
+
+    .button-container {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 2s forwards;
+    }
+
+    .contact-button {
+      padding: 12px 25px;
+      background-color: #8d6e63; /* Café suave */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-button:hover {
+      background-color: #6d4c41; /* Color marrón más oscuro */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .about-text {
+        font-size: 1.1rem;
+      }
+
+      .contact-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Sobre Nosotros</h1>
+    </div>
+
+    <p class="description">Conoce más acerca de nuestra misión y visión.</p>
+
+    <div class="about-text">
+      <p>Somos una aplicación que influye en tus tareas domésticas con el fin de ayudarte a formar hábitos positivos, apoyando la organización de tareas domésticas, aportando ideas para mejorar el consumo alimenticio, administrando tus ahorros al ingresarlos, y asegurándonos de que cada miembro de tu hogar sea consciente de cómo se manejan los recursos.</p>
+    </div>
+
+    <div class="button-container">
+      <a href="mailto:er7886124@gmail.com">
+        <button class="contact-button">¿Tienes dudas? Contáctanos</button>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

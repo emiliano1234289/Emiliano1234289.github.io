@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
+  <style>
+    /* Body styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: #f5f1e1; /* Beige claro */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow: auto; /* Desplazamiento para toda la página */
+    }
+
+    /* Main container */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: #f9f0e1; /* Café claro */
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      color: #5d4037; /* Color marrón oscuro */
+      animation: fadeIn 1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header style */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #3e2723; /* Marrón oscuro */
+      animation: slideIn 1s ease-out;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      color: #3e2723;
+    }
+
+    /* Form group styles */
+    .form-group {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #3e2723;
+      margin-bottom: 10px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 1px solid #b3a59d; /* Color beige oscuro */
+      border-radius: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      transition: all 0.3s ease-in-out;
+      background-color: #f9f0e1; /* Fondo suave beige */
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #6d4c41; /* Marrón oscuro */
+      box-shadow: 0 0 5px rgba(109, 76, 65, 0.6);
+    }
+
+    /* Button style */
+    .form-group button {
+      padding: 15px 30px;
+      background-color: #8d6e63; /* Café suave */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #6d4c41; /* Color marrón más oscuro */
+    }
+
+    /* Recetas y lista de recetas guardadas */
+    .recipes-list,
+    .saved-recipes {
+      margin-top: 30px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .recipe-card {
+      background-color: #fff;
+      color: #3e2723;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .recipe-card h3 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6d4c41;
+      margin-bottom: 15px;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .recipe-card p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+      opacity: 0.8;
+    }
+
+    .assign-task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .assign-task select {
+      width: 60%;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid #b3a59d;
+    }
+
+    .assign-task button {
+      background-color: #ff7043;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .assign-task button:hover {
+      background-color: #f4511e;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #6d4c41;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        font-size: 1rem;
+      }
+
+      .form-group button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+
+      .recipe-card h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Recetas</h1>
+      <p>Agrega tus recetas, recomiéndalas y asígnalas como tareas.</p>
+    </div>
+
+    <!-- Formulario para agregar receta -->
+    <div class="form-group">
+      <label for="recipe-name">Nombre de la receta</label>
+      <input type="text" id="recipe-name" placeholder="Ejemplo: Galletas de avena">
+
+      <label for="ingredients">Ingredientes</label>
+      <textarea id="ingredients" placeholder="Ejemplo: 1 taza de avena, 1 huevo, etc."></textarea>
+
+      <label for="instructions">Instrucciones</label>
+      <textarea id="instructions" placeholder="Ejemplo: Mezclar todos los ingredientes, hornear a 180°C por 20 minutos..."></textarea>
+
+      <button id="add-recipe-btn">Agregar Receta</button>
+    </div>
+
+    <!-- Recetas Guardadas -->
+    <div class="saved-recipes">
+      <h2 class="section-title">Recetas Guardadas</h2>
+      <div class="recipe-card">
+        <h3>Receta Ejemplo: Galletas de avena</h3>
+        <p><strong>Ingredientes:</strong> 1 taza de avena, 1 huevo, 2 cucharadas de miel.</p>
+        <p><strong>Instrucciones:</strong> Mezclar todos los ingredientes y hornear a 180°C por 15 minutos.</p>
+
+        <div class="assign-task">
+          <select>
+            <option value="persona1">Persona 1</option>
+            <option value="persona2">Persona 2</option>
+            <option value="persona3">Persona 3</option>
+          </select>
+          <button>Asignar como tarea</button>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <h3>Receta Ejemplo: Pastel de zanahoria</h3>
+        <p><strong>Ingredientes:</strong> 2 zanahorias, 1 taza de harina, 3 huevos.</p>
+        <p><strong>Instrucciones:</strong> Batir los ingredientes, hornear a 180°C por 25 minutos.</p>
+
+        <div class="assign-task">
+          <select>
+            <option value="persona1">Persona 1</option>
+            <option value="persona2">Persona 2</option>
+            <option value="persona3">Persona 3</option>
+          </select>
+          <button>Asignar como tarea</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de recetas -->
+    <div class="recipes-list">
+      <h2 class="section-title">Todas las Recetas</h2>
+      <!-- Se irán agregando dinámicamente las recetas aquí -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("add-recipe-btn").addEventListener("click", function() {
+      const name = document.getElementById("recipe-name").value;
+      const ingredients = document.getElementById("ingredients").value;
+      const instructions = document.getElementById("instructions").value;
+      
+      if (name && ingredients && instructions) {
+        const recipeCard = `
+          <div class="recipe-card">
+            <h3>${name}</h3>
+            <p><strong>Ingredientes:</strong> ${ingredients}</p>
+            <p><strong>Instrucciones:</strong> ${instructions}</p>
+            <div class="assign-task">
+              <select>
+                <option value="persona1">Persona 1</option>
+                <option value="persona2">Persona 2</option>
+                <option value="persona3">Persona 3</option>
+              </select>
+              <button>Asignar como tarea</button>
+            </div>
+          </div>
+        `;
+        
+        document.querySelector(".recipes-list").innerHTML += recipeCard;
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Space</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reborn&display=swap">
+  <style>
+    /* Estilos Generales */
+    body {
+      font-family: 'Reborn', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #b0bec5; /* Gris azulado suave */
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      animation: backgroundAnimation 20s ease-in-out infinite; /* Cambio suave */
+    }
+
+    @keyframes backgroundAnimation {
+      0% {
+        background: #b0bec5;
+      }
+      50% {
+        background: #90a4ae; /* Gris más claro */
+      }
+      100% {
+        background: #b0bec5;
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      padding: 50px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .left-content {
+      width: 50%;
+      text-align: left;
+    }
+
+    .header h1 {
+      font-size: 5rem;
+      color: #333; /* Color oscuro para las letras */
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-weight: 700;
+      display: inline-block;
+      line-height: 1.1;
+      animation: slideInLeft 1.5s ease-out;
+    }
+
+    .description {
+      font-size: 1.4rem;
+      color: #607d8b; /* Gris azulado suave */
+      margin-top: 20px;
+      font-weight: 300;
+      max-width: 600px;
+      text-align: left;
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .form-container {
+      width: 50%;
+      padding-left: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .form-button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      background: #c5cae9; /* Azul pastel suave */
+      color: #333;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      animation: buttonPop 2s ease-in-out;
+    }
+
+    @keyframes buttonPop {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .form-button:hover {
+      background-color: #8c9eff; /* Azul más brillante */
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-button:focus {
+      outline: none;
+    }
+
+    .form-button a {
+      color: #333; /* Asegurarse de que el texto dentro de los botones sea oscuro */
+      text-decoration: none;
+    }
+
+    /* Fondo con imagen */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://source.unsplash.com/1600x900/?home,space') no-repeat center center;
+      background-size: cover;
+      filter: blur(6px);
+      z-index: -1;
+      animation: fadeBackground 10s infinite alternate;
+    }
+
+    @keyframes fadeBackground {
+      0% {
+        filter: blur(8px);
+      }
+      100% {
+        filter: blur(4px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 3rem;
+      }
+
+      .description {
+        font-size: 1.2rem;
+      }
+
+      .form-button {
+        font-size: 1.1rem;
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .left-content {
+        width: 100%;
+        text-align: center;
+      }
+
+      .form-container {
+        width: 100%;
+        padding-left: 0;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Columna Izquierda -->
+    <div class="left-content">
+      <div class="header">
+        <h1>HOME SPACE</h1>
+      </div>
+      <p class="description">
+        Con perseverancia, lograrás el equilibrio perfecto para tu casa.
+      </p>
+    </div>
+
+    <!-- Columna Derecha (botones) -->
+    <div class="form-container">
+      <form>
+        <button class="form-button"><a href="task_list.html">Tareas Domésticas</a></button> 
+        <button class="form-button"><a href="domestic_expenses.html">Gastos Domésticos</a></button>
+        <button class="form-button"><a href="recipes.html">Recetas</a></button>
+        <button class="form-button"><a herf="Personas que conforman tu Home Space</button>
+        <button class="form-button"><a herf="about_us.html">Sobre Nosotros</a></button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
+

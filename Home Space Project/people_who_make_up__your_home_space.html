@@ -1,0 +1,258 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personas en Home Space</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap">
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f5f1e1; /* Beige claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Centrado vertical */
+      min-height: 100vh; /* Asegura que ocupe toda la pantalla */
+      flex-direction: column;
+      overflow-y: auto; /* Habilitar desplazamiento vertical */
+    }
+
+    .container {
+      width: 80%;  /* Ancho de la sección */
+      max-width: 1000px;
+      padding: 50px;
+      background-color: #fff; /* Blanco */
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      color: #5d4037;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Animación para entrada de los elementos */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 0.5s forwards;
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #6d4c41;
+      text-transform: uppercase;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      color: #3e2723;
+      margin-bottom: 30px;
+      opacity: 0.8;
+      animation: fadeIn 1s ease-in-out 1s forwards;
+    }
+
+    /* Estilos de los formularios */
+    .form-container {
+      width: 100%;
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 1.5s forwards;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #6d4c41;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      color: #5d4037;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    .form-group input[type="number"] {
+      width: 50%;
+    }
+
+    .form-button {
+      padding: 12px 25px;
+      background-color: #8d6e63; /* Café suave */
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-button:hover {
+      background-color: #6d4c41; /* Color marrón más oscuro */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .person-list {
+      margin-top: 40px;
+      width: 100%;
+      text-align: left;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out 2s forwards;
+    }
+
+    .person-item {
+      background-color: #f0e5d8;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .form-title {
+        font-size: 1.3rem;
+      }
+
+      .form-group input {
+        width: 90%;
+      }
+
+      .form-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>Personas que conforman tu Home Space</h1>
+    </div>
+
+    <p class="description">Aquí podrás agregar personas a tu Home Space, asignarles tareas y compartir sus datos.</p>
+
+    <!-- Formulario para agregar personas -->
+    <div class="form-container">
+      <div class="form-title">Agregar Persona</div>
+
+      <div class="form-group">
+        <label for="personName">Nombre</label>
+        <input type="text" id="personName" placeholder="Ingresa el nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="personAge">Edad</label>
+        <input type="number" id="personAge" placeholder="Ingresa la edad">
+      </div>
+
+      <div class="form-group">
+        <label for="relationship">Parentesco</label>
+        <select id="relationship">
+          <option value="familia">Familia</option>
+          <option value="amigos">Amigos</option>
+          <option value="compañeros de trabajo">Compañeros de trabajo</option>
+          <option value="otros">Otros</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="shareData">¿Compartir datos de Home Space?</label>
+        <select id="shareData">
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+
+      <button class="form-button" onclick="addPerson()">Agregar Persona</button>
+    </div>
+
+    <!-- Lista de personas agregadas -->
+    <div class="person-list">
+      <h3>Personas Agregadas:</h3>
+      <div id="personListContainer"></div>
+    </div>
+  </div>
+
+  <script>
+    // Función para agregar persona
+    function addPerson() {
+      const name = document.getElementById('personName').value;
+      const age = document.getElementById('personAge').value;
+      const relationship = document.getElementById('relationship').value;
+      const shareData = document.getElementById('shareData').value;
+
+      if (name && age) {
+        const personContainer = document.getElementById('personListContainer');
+        const personDiv = document.createElement('div');
+        personDiv.classList.add('person-item');
+        
+        // Agregar datos a la persona
+        personDiv.innerHTML = `
+          <strong>Nombre:</strong> ${name} <br>
+          <strong>Edad:</strong> ${age} ${age < 18 ? '(Menor de edad)' : ''} <br>
+          <strong>Parentesco:</strong> ${relationship} <br>
+          <strong>Compartir datos:</strong> ${shareData === 'si' ? 'Sí' : 'No'}
+        `;
+        
+        personContainer.appendChild(personDiv);
+        
+        // Limpiar los campos después de agregar
+        document.getElementById('personName').value = '';
+        document.getElementById('personAge').value = '';
+        document.getElementById('relationship').value = 'familia';
+        document.getElementById('shareData').value = 'si';
+      } else {
+        alert('Por favor, completa todos los campos.');
+      }
+    }
+  </script>
+
+</body>
+</html>
